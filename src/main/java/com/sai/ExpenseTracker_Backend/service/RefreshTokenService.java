@@ -22,10 +22,10 @@ public class RefreshTokenService {
 
 
     public RefreshToken createRefreshToken(String userName){
-        Optional<UserInfo> userInfoExtracted = userRepository.findByUserName(userName);
-        UserInfo userInfo = userInfoExtracted.get();
+        UserInfo userInfoExtracted = userRepository.findByUserName(userName);
+
         RefreshToken refreshToken = RefreshToken.builder()
-                .userInfo(userInfo)
+                .userInfo(userInfoExtracted)
                 .token(UUID.randomUUID().toString())
                 .expiryDate(Instant.now().plusMillis(600000))
                 .build();
@@ -40,6 +40,10 @@ public class RefreshTokenService {
             throw new RuntimeException(token.getToken() + " Refresh token is expired. please login again..!");
         }
         return token;
+    }
+
+    public Optional<RefreshToken> findByToken(String token){
+        return refreshTokenRepository.findByToken(token);
     }
 
 
