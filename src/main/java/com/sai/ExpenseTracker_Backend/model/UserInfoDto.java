@@ -1,4 +1,5 @@
 package com.sai.ExpenseTracker_Backend.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.sai.ExpenseTracker_Backend.enitities.UserInfo;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class UserInfoDto extends UserInfo {
 
+    @JsonProperty("username")
     private String userName;
 
     private String lastName;

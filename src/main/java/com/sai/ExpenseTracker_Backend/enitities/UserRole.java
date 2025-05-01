@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_role")
+@Table(name = "roles")
 public class UserRole {
 
     @Id
@@ -18,7 +18,6 @@ public class UserRole {
     @Column(name = "role_id")
     private Long roleId;
 
-    @Column(name = "role_name")
     private String name;
 
 }
